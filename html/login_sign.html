@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="./img./img/https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="./img./img/https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/icon/login.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/ico/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/ico/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/ico/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/ico/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/ico/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/ico/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/ico/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/ico/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/ico/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/ico/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/ico/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/img/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <!--  font cdn  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <title>Đăng nhập,đăng kí</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-forms">
+        <div class="container-info">
+          <div class="info-item">
+            <p>Bạn đã có tài khoản?</p>
+            <button class="btn">Đăng nhập</button>
+          </div>
+          <div class="info-item">
+            <p>Bạn chưa có tài khoản?</p>
+            <button class="btn">Đăng ký</button>
+          </div>
+        </div>
+
+        <div class="container-form">
+          <form class="form-item log-in" action="">
+            <h1>Đăng nhập</h1>
+            <input
+              id="loginUsername"
+              name="Username"
+              placeholder="Tên đăng nhập"
+              type="text"
+            />
+            <input
+              id="loginPassword"
+              name="Password"
+              placeholder="Mật khẩu"
+              type="password"
+            />
+            <div id="loginMessage"></div>
+            <button class="btn" type="submit" onclick="login(event)">
+              Đăng nhập
+            </button>
+          </form>
+          <form class="form-item sign-up" action="">
+            <h1>Đăng ký</h1>
+            <input
+              type="email"
+              id="regEmail"
+              placeholder="Email"
+              name="Email"
+            />
+            <input
+              type="text"
+              id="regPhone"
+              placeholder="Số điện thoại"
+              name="Phone"
+            />
+            <input
+              type="text"
+              id="regFullname"
+              name="fullname"
+              placeholder="Họ và tên"
+            />
+            <input
+              type="text"
+              id="regUsername"
+              name="Username"
+              placeholder="Tên đăng nhập"
+            />
+            <input
+              type="password"
+              id="regPassword"
+              name="Password"
+              placeholder="Mật khẩu"
+            />
+            <div id="regMessage"></div>
+            <button class="btn" type="submit" onclick="register(event)">
+              Đăng ký
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

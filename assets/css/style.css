@@ -28,10 +28,22 @@ a {
   opacity: 0.9;
 }
 /* =================================header */
+.header__img2 {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.header__hearts {
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+}
 .header.fixed {
   position: sticky;
   top: -15px;
-  z-index: 1;
+  z-index: 9999;
 }
 .header__logo {
   height: 90px;
@@ -82,18 +94,43 @@ a {
   gap: 20px;
   cursor: pointer;
 }
+.header__btn--in a,
+.header__btn--up a {
+  color: rgb(3, 88, 3);
+  gap: 20px;
+  cursor: pointer;
+}
 /*================= header background */
+.container.background {
+  display: flex;
+  transition: all 0.5s ease;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.header__background2 {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
 .header__background {
   width: 100%;
   height: 500px;
   object-fit: cover;
-  position: relative;
+  flex-shrink: 0;
 }
-.background__info {
+/* .background__info {
   position: absolute;
   top: 75px;
   left: 30px;
-}
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2;
+  text-align: center;
+} */
 .background__desc {
   color: #fff;
   margin-bottom: 20px;
@@ -104,6 +141,25 @@ a {
   color: #fff;
   font-size: 16px;
   font-weight: 500;
+}
+.header__dot {
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.dot1 {
+  height: 15px;
+  width: 15px;
+  background-color: #f2f3f3;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dot1.active {
+  background-color: #0a0a0a;
 }
 /*========================= header search */
 .header__search {
