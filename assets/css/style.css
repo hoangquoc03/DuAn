@@ -43,7 +43,7 @@ a {
 .header.fixed {
   position: sticky;
   top: -15px;
-  z-index: 9999;
+  z-index: 990;
 }
 .header__logo {
   height: 90px;
@@ -378,6 +378,139 @@ main {
   border: 1px solid #fff;
   margin-left: auto;
 }
+
+/* =====================main home1========================== */
+.hom1__body2 {
+  padding: 10px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+.hom1__hot {
+  background-color: red;
+  font-size: 20px;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+.hom1__body .hom1__hot2 {
+  font-size: 20px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background-color: #06a836;
+}
+.homm1__add3 {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.homm1__add3 > p {
+  font-size: 30px;
+  font-weight: 700;
+}
+/*  ======================img===================== */
+.home1__body5 {
+  margin-top: 20px;
+}
+.hom1__body {
+  padding: 15px;
+  box-shadow: 5px 0 5px rgb(145, 142, 142);
+  border-radius: 5px;
+  border: 1px solid rgb(145, 142, 142);
+}
+.hom1__img--body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  border-radius: 10px;
+  /* bạn có thể điều chỉnh */
+}
+.home1__img5 {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+  /* box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); */
+}
+
+/* ============================info=================== */
+.home1__add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.home1__add .home1__price {
+  color: #9ca8b1;
+}
+.home1__add .home1__price1 {
+  font-size: 25px;
+  color: #009966;
+}
+.home1__add2 {
+  padding: 10px;
+  background-color: #009966;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+}
+.home1__info {
+  padding: 10px 0;
+  border-top: 1px solid #9ca8b1;
+  border-bottom: 1px solid #9ca8b1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 25px;
+}
+.home1__info1--desc i {
+  width: 20px;
+  margin-right: 5px;
+  color: #009966;
+}
+.home1__info1--desc {
+  font-size: 15px;
+  font-weight: 600;
+}
+.home1__info2 {
+  padding: 15px 0;
+  border-bottom: 1px solid #9ca8b1;
+}
+.home1__info2--desc3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.home1__info2 p:last-child {
+  white-space: pre;
+}
 /* =======================maketing img====== */
 .maketing__img {
   margin-top: 60px;
@@ -386,6 +519,29 @@ main {
 }
 .main__canho {
   margin-top: 60px;
+}
+/* ====================================Đoi Tuong=============== */
+.home1__info3 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #9ca8b1;
+}
+.home1__info3 p {
+  font-size: 20px;
+  padding: 15px 0;
+}
+.home1__info3--dt {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 15px;
+  font-weight: 600;
+}
+.home1__info3--dt i {
+  width: 20px;
+  margin-right: 5px;
+  color: #009966;
+}
+.home1__info3.info4 {
+  border-bottom: none;
 }
 /* ==========================main nguyen============ */
 .main__nguyen {

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="./img./img/https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="./img./img/https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/ico/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/ico/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/ico/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/ico/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/ico/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/ico/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/ico/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/ico/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/ico/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/ico/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/ico/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./img/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <!--  font cdn  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <title>Review</title>
+  </head>
+  <body>
+    <header class="header fixed">
+      <div class="container">
+        <div class="header__body">
+          <!-- logo -->
+          <a href="./index.html"
+            ><img src="/img/logo.png" alt="Green inn" class="header__logo"
+          /></a>
+          <!-- nav -->
+          <nav class="header__nav">
+            <ul>
+              <li>
+                <a href="./home.html">Nhà trọ,phòng trọ</a>
+              </li>
+              <li>
+                <a href="./homeN.html">Nhà nguyên căn</a>
+              </li>
+              <li>
+                <a href="./canho.html">Căn hộ</a>
+              </li>
+              <li>
+                <a href="./review.html">Video Review</a>
+              </li>
+              <li>
+                <a href="./blog.html"> Blog</a>
+              </li>
+            </ul>
+          </nav>
+          <!-- btn -->
+          <div class="header__btn">
+            <div class="btn header__btn--in">
+              <a href="./login_sign.html"
+                ><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a
+              >
+            </div>
+            <div class="btn header__btn--up">
+              <a href="./login_sign.html">
+                <i class="fa-solid fa-user-plus"></i>
+                Đăng ký
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="container">
+          <div class="hom1__body">
+            <div class="hom1__body2">
+              <span class="hom1__hot">hot</span>
+              <span class="hom1__hot2">nhà trọ,phòng trọ</span>
+              <span class="hom1__hot2">Hà Đông</span>
+            </div>
+            <div class="homm1__add3">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <p >NHÀ TRỌ Ở NGÕ 7 TỔ 10 YÊN NGHĨA, HÀ ĐÔNG</p>
+            </div>
+            <div id="imageModal" class="modal" onclick="closeImage()">
+               <span class="close">&times;</span>
+                <img class="modal-content" id="imgPopup">
+            </div>
+            <div class="hom1__img--body">
+              <div><img src="/img/phong.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+              <div><img src="/img/home1tolet.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+
+              <div><img src="/img/home1pic.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+              <div><img src="/img/homechif.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+             
+            </div>
+
+            <div class="home1__body5">
+              <div class="home1__add">
+                <div class="home1__add1">
+                  <p class="home1__price">Giá trị từ</p>
+                  <p class="home1__price1">2.5 triệu/tháng</p>
+                </div>
+                <div class="home1__add2">
+                  <i class="fa-solid fa-phone"></i>Liên hệ chủ trọ
+                </div>
+              </div>
+              <div class="home1__info">
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-house"></i>Nhà trọ,phòng trọ
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-dollar-sign"></i>Giá chỉ từ 2.5
+                  triệu/tháng
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-user-group"></i>20 phòng
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-s"></i>Khoảng 20m²
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-user"></i>Chủ trọ:098826821
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-phone"></i>098826821
+                </div>
+              </div>
+              <div class="home1__info2">
+                <p class="home1__info2--desc3">Giới thiệu</p>
+                <div>
+                  <p>
+                    - Nội thất sẵn: Máy lạnh, kệ bếp, giường nệm, bàn ghế, nước máy nóng lạnh, tủ quần áo , tủ lạnh,...
+                    - Cửa ra vào vân tay, có máy giặt chung
+                    - Giờ giấc tự do, không chung chủ
+                    - Thuận tiện di chuyển đi học, đi làm
+                    - Khu vực an ninh cao, hàng xóm thân thiện
+  
+                  </p>
+                </div>
+              </div>
+              <div class="home1__info3">
+                <p>Đối tượng</p>
+                <div class="home1__info3--dt">
+                  <div><i class="fa-solid fa-graduation-cap"></i>đi học</div>
+                  <div><i class="fa-solid fa-briefcase"></i>đi làm</div>
+                  <div><i class="fa-solid fa-people-roof"></i>gia đình</div>
+                  <div><i class="fa-solid fa-venus-double"></i>cặp đội</div>
+                </div>
+              </div>
+              <div class="home1__info3">
+                <p>Tiện nghi</p>
+                <div class="home1__info3--dt">
+                  <div><i class="fa-solid fa-wifi"></i></i>Wifi</div>
+                  <div><i class="fa-solid fa-toilet-portable"></i>Vệ sinh trong</div>
+                  <div><i class="fa-solid fa-hard-drive"></i>Máy giặt</div>
+                  <div><i class="fa-solid fa-wind"></i>Điều hòa</div>
+                  <div><i class="fa-solid fa-bed"></i>Giường</div>
+                  <div><i class="fa-solid fa-paragraph"></i>Bãi để xe riêng</div>
+                  <div><i class="fa-solid fa-video"></i>Camera an ninh</div>
+                </div>
+              </div>
+              <div class="home1__info3">
+                <p>Môi trường xung quanh</p>
+                <div class="home1__info3--dt">
+                  <div><i class="fa-solid fa-shop"></i>Chợ</div>
+                  <div><i class="fa-solid fa-store"></i>Siêu thị</div>
+                  <div><i class="fa-solid fa-hospital"></i></i>Bệnh viện</div>
+                  <div><i class="fa-solid fa-school"></i>Trường học</div>
+                  <div><i class="fa-solid fa-tree"></i>Công viên</div>
+                  <div><i class="fa-solid fa-bus-simple"></i>Bến xe Bus</div>
+                  <div><i class="fa-solid fa-medal"></i>Trung tâm thể dục thể thao</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="home1__info3 info4">
+              <p>Khu vực xung quanh trọ</p>
+              <div class="home1__info3--dt">
+                <div>Trường đại học Phenikaa <span>4.92km</span></div>
+                <div>Bệnh viên Nhi Hà Nội <span>4.92km</span></div>
+                <div>Công viên Âm Nhạc <span>1.4km</span></div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+    </main>
+    <section class="footer">
+      <div class="container">
+        <!-- top footer -->
+        <div class="footer__top">
+          <!-- column 1 -->
+          <div class="footer__column">
+            <!-- logo -->
+            <a href="./"><img src="/img/logo.png" alt="" class="logo" /></a>
+          </div>
+          <!-- column 2 -->
+          <div class="footer__column">
+            <h3 class="footer__heading">HỖ TRỢ</h3>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="#!" class="footer__link">Trung tập trợ giúp</a>
+              </li>
+              <li class="footer__item">
+                <a href="#!" class="footer__link">Thông tin tài khoản</a>
+              </li>
+              <li class="footer__item">
+                <a href="#!" class="footer__link">Về</a>
+              </li>
+              <li class="footer__item">
+                <a href="#!" class="footer__link">Liên hệ với chúng tôi</a>
+              </li>
+            </ul>
+            <h3 class="footer__heading">HỆ THỐNG</h3>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="#!" class="footer__link">Dành cho chủ trọ</a>
+              </li>
+              <li class="footer__item">
+                <a href="#!" class="footer__link">hưỡng dẫn</a>
+              </li>
+              <li class="footer__item">
+                <a href="#!" class="footer__link">Liên hệ</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- column 4 -->
+          <div class="footer__column">
+            <h3 class="footer__heading">KẾT NỐI VỚI CHÚNG TÔI</h3>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="tel:036868686" class="footer__link"
+                  >Hotline:0368.686.86</a
+                >
+              </li>
+            </ul>
+            <div class="footer__social">
+              <a href="#!" class="footer__social-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="6"
+                  height="12"
+                  viewBox="0 0 6 12"
+                  fill="none"
+                >
+                  <path
+                    d="M3.98981 11.9358V6.0302H5.76473L6 3.9517H3.98981L3.9928 2.91132C3.9928 2.3692 4.0477 2.07885 4.87783 2.07885H5.98755V0H4.21224C2.07977 0 1.32931 1.00825 1.32931 2.70405V3.95186H0V6.03055H1.32931V11.8521C1.84718 11.9489 2.38257 12 2.93075 12C3.28487 12 3.63863 11.9786 3.98981 11.9358Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a href="#!" class="footer__social-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="12"
+                  viewBox="0 0 16 12"
+                  fill="none"
+                >
+                  <path
+                    d="M16 1.42062C15.405 1.66154 14.771 1.82123 14.11 1.89877C14.79 1.524 15.309 0.935077 15.553 0.225231C14.919 0.574154 14.219 0.820615 13.473 0.958154C12.871 0.366462 12.013 0 11.077 0C9.261 0 7.799 1.36062 7.799 3.02862C7.799 3.26862 7.821 3.49938 7.875 3.71908C5.148 3.59631 2.735 2.38985 1.114 0.552C0.831 1.00523 0.665 1.524 0.665 2.08246C0.665 3.13108 1.25 4.06062 2.122 4.59877C1.595 4.58954 1.078 4.44831 0.64 4.22585C0.64 4.23508 0.64 4.24708 0.64 4.25908C0.64 5.73046 1.777 6.95262 3.268 7.23415C3.001 7.30154 2.71 7.33385 2.408 7.33385C2.198 7.33385 1.986 7.32277 1.787 7.28215C2.212 8.48123 3.418 9.36277 4.852 9.39138C3.736 10.1972 2.319 10.6828 0.785 10.6828C0.516 10.6828 0.258 10.6717 0 10.6412C1.453 11.5062 3.175 12 5.032 12C11.068 12 14.368 7.38462 14.368 3.384C14.368 3.25015 14.363 3.12092 14.356 2.99262C15.007 2.56615 15.554 2.03354 16 1.42062Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+              <a href="#!" class="footer__social-btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="12"
+                  viewBox="0 0 13 12"
+                  fill="none"
+                >
+                  <path
+                    d="M0 1.39394C0 0.989891 0.146401 0.656558 0.439189 0.393939C0.731978 0.131309 1.11262 0 1.58108 0C2.04119 0 2.41344 0.129285 2.69788 0.387879C2.99066 0.654545 3.13707 1.00201 3.13707 1.4303C3.13707 1.81818 2.99486 2.14141 2.71042 2.4C2.41764 2.66667 2.03282 2.8 1.55598 2.8H1.54344C1.08333 2.8 0.711072 2.66667 0.426641 2.4C0.142209 2.13333 0 1.79798 0 1.39394ZM0.163127 12V3.90303H2.94884V12H0.163127ZM4.49228 12H7.27799V7.47879C7.27799 7.19595 7.31146 6.97777 7.37838 6.82424C7.49549 6.54949 7.67326 6.31716 7.91168 6.12727C8.1501 5.93737 8.44916 5.84242 8.80888 5.84242C9.74582 5.84242 10.2143 6.45252 10.2143 7.67273V12H13V7.35758C13 6.16161 12.7072 5.25455 12.1216 4.63636C11.536 4.01818 10.7622 3.70909 9.80019 3.70909C8.72104 3.70909 7.88031 4.15758 7.27799 5.05455V5.07879H7.26544L7.27799 5.05455V3.90303H4.49228C4.509 4.16161 4.51737 4.96565 4.51737 6.31515C4.51737 7.66464 4.509 9.55959 4.49228 12Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <h3 class="footer__heading">Đăng ký</h3>
+            <form class="footer-form" action="">
+              <input
+                type="tel:098865"
+                class="footer-form__input"
+                placeholder="Điền số điện thoại..."
+              />
+              <button class="footer-form__submit">Đăng Ký</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+  function openImage(imgElement) {
+    var modal = document.getElementById("imageModal");
+    var popupImg = document.getElementById("imgPopup");
+    popupImg.src = imgElement.src;
+    modal.style.display = "flex";
+  }
+
+  function closeImage() {
+    var modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+  }
+</script>
+
+  </body>
+</html>
