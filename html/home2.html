@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- embed fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,9 +10,8 @@
       href="./img./img/https://fonts.gstatic.com"
       crossorigin
     />
-
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      href="./img./img/https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
       rel="stylesheet"
     />
 
@@ -99,11 +97,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
-    <title>Green inn</title>
+
+    <title>Review</title>
   </head>
   <body>
-    <!-- link -->
-    <!-- header -->
     <header class="header fixed">
       <div class="container">
         <div class="header__body">
@@ -140,115 +137,122 @@
         </div>
       </div>
     </header>
-    <section class="header">
-      <div class="container">
-        <div class="header__background2">
-          <div class="container background">
-            <img src="/img/background1.jpg" alt="" class="header__background" />
-            <img src="/img/background2.jpg" alt="" class="header__background" />
-          </div>
-          <div class="header__dot">
-            <div class="dot1 active"></div>
-            <div class="dot1"></div>
-          </div>
-        </div>
-        <div class="header__search">
-          <form>
-            <div class="header__search1">
-              <i class="header__icon fa-solid fa-magnifying-glass"></i>
-              <input
-                class="header__input"
-                type="text"
-                placeholder="Bạn muốn tìm trọ ở đâu?"
-              />
-            </div>
-          </form>
-          <div class="header__selection">
-            <form>
-              <i class="search__icon fa-solid fa-house"></i>
-              <select name="" id="" class="header__select">
-                <option value="nhanguyencan">Nhà nguyên căn</option>
-                <option value="nhatro" selected>Nhà trọ,phòng trọ</option>
-                <option value="canho">căn hộ</option>
-              </select>
-            </form>
-          </div>
-          <div class="header__address">
-            <form action="">
-              <i class="search__icon fa-solid fa-location-dot"></i>
 
-              <select name="" id="" class="header__select">
-                <optgroup label="Hà Nội">
-                  <option value="thanhxuan">Thanh Xuân</option>
-                  <option value="hadong" selected>Hà Đông</option>
-                  <option value="dongda">Đống Đa</option>
-                  <option value="badinh">Ba Đình</option>
-                  <option value="haibatrung">Hai Bà Trưng</option>
-                  <option value="longbien">Long Biên</option>
-                  <option value="tayho">Tây Hồ</option>
-                  <option value="namtuliem">Nam Từ Liên</option>
-                  <option value="bactuliem">Bắc Từ Liêm</option>
-                  <option value="hoangmai">Hoàng Mai</option>
-                  <option value="caugiay">Cấu Giấy</option>
-                  <option value="hoankiem">Hoàn Kiếm</option>
-                </optgroup>
-              </select>
-            </form>
-          </div>
-          <div class="header__price">
-            <i class="search__icon fa-solid fa-dollar-sign"></i>
-            <select name="" id="" class="header__select">
-              <option value="">Mức giá</option>
-              <option value="duoi">Dưới 1 triệu</option>
-              <option value="bang">2-3 triệu</option>
-              <option value="tren">3-5 triệu</option>
-              <option value="lon">5-8 triệu</option>
-              <option value="lon">8-9 triệu</option>
-            </select>
-          </div>
-          <div class="header__btn1">
-            <div class="btn header__btn2">
-              tìm kiếm<i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="work">
-      <div class="container">
-        <div class="work__body">
-          <img src="/img/maketing2.jpg" alt="" class="work__img" />
-          <img src="/img/maketing3.jpg" alt="" class="work__img" />
-          <img src="/img/maketing4.jpg" alt="" class="work__img" />
-        </div>
-      </div>
-    </section>
     <main>
-      <section class="main__blog">
+      <section>
         <div class="container">
-          <div class="blog__body">
-            <p class="blod__desc">Video Review</p>
-            <div class="blog__video">
-              <video
-                src="/video/feedback.mp4"
-                autoplay="autoplay"
-                controls
-              ></video>
-              <video
-                src="/video/feedback2.mp4"
-                autoplay="autoplay"
-                controls
-              ></video>
-              <video
-                src="/video/feekback3.mp4"
-                autoplay="autoplay"
-                controls
-              ></video>
+          <div class="hom1__body">
+            <div class="hom1__body2">
+              <span class="hom1__hot">hot</span>
+              <span class="hom1__hot2">nhà trọ,phòng trọ</span>
+              <span class="hom1__hot2">Hà Đông</span>
             </div>
-            <p class="blog__code">
-              Xem thêm nhiều hơn
-              <i class="fa-solid fa-arrow-right"></i>
-            </p>
+            <div class="homm1__add3">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <p >NHÀ TRỌ Ở NGÕ 7 TỔ 10 YÊN NGHĨA, HÀ ĐÔNG</p>
+            </div>
+            <div id="imageModal" class="modal" onclick="closeImage()">
+               <span class="close">&times;</span>
+                <img class="modal-content" id="imgPopup">
+            </div>
+            <div class="hom1__img--body">
+              <div><img src="/img/phong.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+              <div><img src="/img/home1tolet.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+
+              <div><img src="/img/home1pic.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+              <div><img src="/img/homechif.jpg" alt="hinhanh" class="home1__img5"  onclick="openImage(this)" /></div>
+             
+            </div>
+
+            <div class="home1__body5">
+              <div class="home1__add">
+                <div class="home1__add1">
+                  <p class="home1__price">Giá trị từ</p>
+                  <p class="home1__price1">2.5 triệu/tháng</p>
+                </div>
+                <div class="home1__add2">
+                  <i class="fa-solid fa-phone"></i>Liên hệ chủ trọ
+                </div>
+              </div>
+              <div class="home1__info">
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-house"></i>Nhà trọ,phòng trọ
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-dollar-sign"></i>Giá chỉ từ 2.5
+                  triệu/tháng
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-user-group"></i>20 phòng
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-s"></i>Khoảng 20m²
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-user"></i>Chủ trọ:098826821
+                </div>
+                <div class="home1__info1--desc">
+                  <i class="fa-solid fa-phone"></i>098826821
+                </div>
+              </div>
+              <div class="home1__info2">
+                <p class="home1__info2--desc3">Giới thiệu</p>
+                <div>
+                  <p>
+                    - Nội thất sẵn: Máy lạnh, kệ bếp, giường nệm, bàn ghế, nước máy nóng lạnh, tủ quần áo , tủ lạnh,...
+                    - Cửa ra vào vân tay, có máy giặt chung
+                    - Giờ giấc tự do, không chung chủ
+                    - Thuận tiện di chuyển đi học, đi làm
+                    - Khu vực an ninh cao, hàng xóm thân thiện
+  
+                  </p>
+                </div>
+              </div>
+              <div class="home1__info3">
+                <p>Đối tượng</p>
+                <div class="home1__info3--dt">
+                  <div><i class="fa-solid fa-graduation-cap"></i>đi học</div>
+                  <div><i class="fa-solid fa-briefcase"></i>đi làm</div>
+                  <div><i class="fa-solid fa-people-roof"></i>gia đình</div>
+                  <div><i class="fa-solid fa-venus-double"></i>cặp đội</div>
+                </div>
+              </div>
+              <div class="home1__info3">
+                <p>Tiện nghi</p>
+                <div class="home1__info3--dt">
+                  <div><i class="fa-solid fa-wifi"></i></i>Wifi</div>
+                  <div><i class="fa-solid fa-toilet-portable"></i>Vệ sinh trong</div>
+                  <div><i class="fa-solid fa-hard-drive"></i>Máy giặt</div>
+                  <div><i class="fa-solid fa-wind"></i>Điều hòa</div>
+                  <div><i class="fa-solid fa-bed"></i>Giường</div>
+                  <div><i class="fa-solid fa-paragraph"></i>Bãi để xe riêng</div>
+                  <div><i class="fa-solid fa-video"></i>Camera an ninh</div>
+                </div>
+              </div>
+              <div class="home1__info3">
+                <p>Môi trường xung quanh</p>
+                <div class="home1__info3--dt">
+                  <div><i class="fa-solid fa-shop"></i>Chợ</div>
+                  <div><i class="fa-solid fa-store"></i>Siêu thị</div>
+                  <div><i class="fa-solid fa-hospital"></i></i>Bệnh viện</div>
+                  <div><i class="fa-solid fa-school"></i>Trường học</div>
+                  <div><i class="fa-solid fa-tree"></i>Công viên</div>
+                  <div><i class="fa-solid fa-bus-simple"></i>Bến xe Bus</div>
+                  <div><i class="fa-solid fa-medal"></i>Trung tâm thể dục thể thao</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="home1__info3 info4">
+              <p>Khu vực xung quanh trọ</p>
+              <div class="home1__info3--dt">
+                <div>Trường đại học Phenikaa <span>4.92km</span></div>
+                <div>Bệnh viên Nhi Hà Nội <span>4.92km</span></div>
+                <div>Công viên Âm Nhạc <span>1.4km</span></div>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </section>
@@ -361,7 +365,19 @@
         </div>
       </div>
     </section>
-    <!-- js -->
-    <script src="/main.js"></script>
+    <script>
+  function openImage(imgElement) {
+    var modal = document.getElementById("imageModal");
+    var popupImg = document.getElementById("imgPopup");
+    popupImg.src = imgElement.src;
+    modal.style.display = "flex";
+  }
+
+  function closeImage() {
+    var modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+  }
+</script>
+
   </body>
 </html>
