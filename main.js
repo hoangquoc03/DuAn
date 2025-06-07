@@ -29,6 +29,13 @@ function autoSlide() {
   showImage(index);
 }
 setInterval(autoSlide, 5000);
+
+document.querySelectorAll(".info-item .btn").forEach(function (button) {
+  button.addEventListener("click", function () {
+    document.querySelector(".container").classList.toggle("log-in");
+  });
+});
+
 // đăng nhập và đăng ký
 function register(event) {
   event.preventDefault();
@@ -95,7 +102,31 @@ function register(event) {
     regMessage.style.color = "green";
 
     setTimeout(() => {
-      window.location.href = ".html";
+      window.location.href = "/html/logn_in.html";
     }, 1500);
+  }
+}
+function login(event) {
+  event.preventDefault();
+
+  let username = document.getElementById("loginUsername").value.trim();
+  let password = document.getElementById("loginPassword").value.trim();
+  let loginMessage = document.getElementById("loginMessage");
+
+  let users = localStorage.getItem("users")
+    ? JSON.parse(localStorage.getItem("users"))
+    : {};
+
+  let storedUser = users[username];
+
+  if (storedUser && storedUser.password === password) {
+    loginMessage.innerText = "Đăng nhập thành công";
+    loginMessage.style.color = "green";
+    setTimeout(() => {
+      window.location.href = "/html/logn_in.html";
+    }, 1500);
+  } else {
+    loginMessage.innerText = "Sai tên người dùng hoặc mật khẩu";
+    loginMessage.style.color = "red";
   }
 }

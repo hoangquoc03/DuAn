@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- embed fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -10,10 +11,12 @@
       href="./img./img/https://fonts.gstatic.com"
       crossorigin
     />
+
     <link
-      href="./img./img/https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="/assets/css/style.css" />
 
     <!-- Favicon -->
@@ -96,71 +99,161 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
-
-    <title>Blog</title>
+    <title>Green inn</title>
   </head>
   <body>
+    <!-- link -->
+    <!-- header -->
     <header class="header fixed">
       <div class="container">
         <div class="header__body">
           <!-- logo -->
-          <a href="./index.html"
+          <a href="/html/logn_in.html"
             ><img src="/img/logo.png" alt="Green inn" class="header__logo"
           /></a>
           <!-- nav -->
           <nav class="header__nav">
             <ul>
               <li>
-                <a href="./home.html">Nhà trọ,phòng trọ</a>
+                <a href="/html/home_in.html">Nhà trọ,phòng trọ</a>
               </li>
               <li>
-                <a href="./homeN.html">Nhà nguyên căn</a>
+                <a href="/html/homeN_in.html">Nhà nguyên căn</a>
               </li>
               <li>
-                <a href="./canho.html">Căn hộ</a>
+                <a href="/html/canho_in.html">Căn hộ</a>
               </li>
               <li>
-                <a href="./review.html">Video Review</a>
+                <a href="/html/review_in.html">Video Review</a>
               </li>
               <li>
-                <a href="./blog.html"> Blog</a>
+                <a href="/html/blog_in.html"> Blog</a>
               </li>
             </ul>
           </nav>
-          <!-- btn -->
-          <div class="header__btn">
-            <div class="btn header__btn--in">
-              <a href="./login_sign.html"
-                ><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a
-              >
-            </div>
-            <div class="btn header__btn--up">
-              <a href="./login_sign.html">
-                <i class="fa-solid fa-user-plus"></i>
-                Đăng ký
-              </a>
-            </div>
+          <div class="header__hearts">
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-bell"></i>
+            <img src="/img/avatar.jpg" alt="" class="header__img2" />
           </div>
+          <!-- btn -->
         </div>
       </div>
     </header>
-
     <main>
-      <div class="container">
-        <div class="maketing__body">
-          <img src="/img/maketing5.jpg" alt="" class="maketing__img" />
+      <section class="main__blog">
+        <div class="container">
+          <div class="blog__body">
+            <p class="blod__desc">Video Review</p>
+            <div class="blog__video">
+              <video
+                src="/video/feedback.mp4"
+                autoplay="autoplay"
+                controls
+              ></video>
+              <video
+                src="/video/feedback2.mp4"
+                autoplay="autoplay"
+                controls
+              ></video>
+              <video
+                src="/video/feekback3.mp4"
+                autoplay="autoplay"
+                controls
+              ></video>
+            </div>
+            <p class="blog__code">
+              Xem thêm nhiều hơn
+              <i class="fa-solid fa-arrow-right"></i>
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
+    </main>
+    <section class="header">
       <div class="container">
-        <div class="blog__body2">
-          <div class="work__body">
-            <img src="/img/maketing2.jpg" alt="" class="work__img" />
-            <img src="/img/maketing3.jpg" alt="" class="work__img" />
-            <img src="/img/maketing4.jpg" alt="" class="work__img" />
+        <div class="header__background2">
+          <div class="container background">
+            <img src="/img/background1.jpg" alt="" class="header__background" />
+            <img src="/img/background2.jpg" alt="" class="header__background" />
+          </div>
+          <div class="header__dot">
+            <div class="dot1 active"></div>
+            <div class="dot1"></div>
+          </div>
+        </div>
+        <div class="header__search">
+          <form>
+            <div class="header__search1">
+              <i class="header__icon fa-solid fa-magnifying-glass"></i>
+              <input
+                class="header__input"
+                type="text"
+                placeholder="Bạn muốn tìm trọ ở đâu?"
+              />
+            </div>
+          </form>
+          <div class="header__selection">
+            <form>
+              <i class="search__icon fa-solid fa-house"></i>
+              <select name="" id="" class="header__select">
+                <option value="nhanguyencan">Nhà nguyên căn</option>
+                <option value="nhatro" selected>Nhà trọ,phòng trọ</option>
+                <option value="canho">căn hộ</option>
+              </select>
+            </form>
+          </div>
+          <div class="header__address">
+            <form action="">
+              <i class="search__icon fa-solid fa-location-dot"></i>
+
+              <select name="" id="" class="header__select">
+                <optgroup label="Hà Nội">
+                  <option value="thanhxuan">Thanh Xuân</option>
+                  <option value="hadong" selected>Hà Đông</option>
+                  <option value="dongda">Đống Đa</option>
+                  <option value="badinh">Ba Đình</option>
+                  <option value="haibatrung">Hai Bà Trưng</option>
+                  <option value="longbien">Long Biên</option>
+                  <option value="tayho">Tây Hồ</option>
+                  <option value="namtuliem">Nam Từ Liên</option>
+                  <option value="bactuliem">Bắc Từ Liêm</option>
+                  <option value="hoangmai">Hoàng Mai</option>
+                  <option value="caugiay">Cấu Giấy</option>
+                  <option value="hoankiem">Hoàn Kiếm</option>
+                </optgroup>
+              </select>
+            </form>
+          </div>
+          <div class="header__price">
+            <i class="search__icon fa-solid fa-dollar-sign"></i>
+            <select name="" id="" class="header__select">
+              <option value="">Mức giá</option>
+              <option value="duoi">Dưới 1 triệu</option>
+              <option value="bang">2-3 triệu</option>
+              <option value="tren">3-5 triệu</option>
+              <option value="lon">5-8 triệu</option>
+              <option value="lon">8-9 triệu</option>
+            </select>
+          </div>
+          <div class="header__btn1">
+            <div class="btn header__btn2">
+              tìm kiếm<i class="fa-solid fa-magnifying-glass"></i>
+            </div>
           </div>
         </div>
       </div>
-    </main>
+    </section>
+    <section class="work">
+      <div class="container">
+        <div class="work__body">
+          <img src="/img/maketing2.jpg" alt="" class="work__img" />
+          <img src="/img/maketing3.jpg" alt="" class="work__img" />
+          <img src="/img/maketing4.jpg" alt="" class="work__img" />
+        </div>
+      </div>
+    </section>
+    main
     <section class="footer">
       <div class="container">
         <!-- top footer -->
@@ -269,5 +362,7 @@
         </div>
       </div>
     </section>
+    <!-- js -->
+    <script src="/main.js"></script>
   </body>
 </html>
