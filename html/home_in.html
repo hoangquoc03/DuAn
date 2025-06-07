@@ -132,9 +132,20 @@
             </ul>
           </nav>
           <div class="header__hearts">
-            <i class="fa-regular fa-heart"></i>
-            <i class="fa-regular fa-bell"></i>
-            <img src="/img/avatar.jpg" alt="" class="header__img2" />
+            <div class="icon-wrapper heart-wrapper">
+              <i class="fa-regular fa-heart" id="heart-icon"></i>
+              <span id="heart-count">0</span>
+              <div class="favorites-list">
+                <div class="favorites-list-header">Trọ đã lưu</div>
+                <div class="favorite-item">Danh sách ưu thích trống</div>
+              </div>
+            </div>
+            <div class="icon-wrapper bell-wrapper">
+              <i class="fa-regular fa-bell"></i>
+            </div>
+          </div>
+          <div class="header__hearts">
+            <img src="/img/avatar.jpg" alt="" class="header__img2 avatar" />
           </div>
           <!-- btn -->
         </div>
@@ -497,5 +508,6 @@
     </section>
     <!-- js -->
     <script src="/main.js"></script>
+    <script src="/update_main.js"></script>
   </body>
 </html>
