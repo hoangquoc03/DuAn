@@ -679,7 +679,7 @@ main {
 .header__hearts {
   position: relative;
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
 }
 /* full heart */
@@ -781,4 +781,80 @@ main {
   font-size: 14px;
   background: #f9f9f9;
   cursor: pointer;
+}
+
+/* avartar */
+
+.user-menu-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* mở gioa diện  */
+.user-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 260px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.user-dropdown.active {
+  display: block;
+}
+
+/* username   */
+.user-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+.user-dropdown-header img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* giao  diện  người dùng  */
+.user-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.user-dropdown-item:hover {
+  background: #f5f5f5;
+}
+
+.user-dropdown-item + .user-dropdown-item {
+  border-top: 1px solid #eee;
+}
+#logoutBtn {
+  color: #e74c3c;
+  font-weight: 500;
 }
