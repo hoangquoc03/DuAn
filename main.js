@@ -354,3 +354,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateFavoritesList();
 });
+// toggle
+const navToggle = document.getElementById("navToggle");
+const mainNav = document.getElementById("mainNav");
+
+navToggle.addEventListener("click", () => {
+  mainNav.classList.toggle("active");
+});

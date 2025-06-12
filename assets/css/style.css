@@ -183,6 +183,7 @@ a {
   background: #fff;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
 }
 .header__input {
   padding-left: 20px;
@@ -202,21 +203,46 @@ select {
   border: none;
 }
 .search__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #a7adb1;
+  font-size: 16px;
+  pointer-events: none;
 }
 .header__select {
-  padding-right: 100px;
+  padding-left: 25px; /* chừa chỗ cho icon */
+  width: 300px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
 }
 .header__btn2 {
   padding: 10px 25px;
   color: #fff;
-  font-size: 19px;
-  background-color: rgb(3, 88, 3);
+  font-size: 18px;
+  background-color: orange;
   cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
+
+.header__btn2:hover {
+  background-color: darkorange;
+}
+
 .header__btn2 > i {
-  margin-left: 10px;
+  margin-left: 8px;
+  font-size: 16px;
 }
+
 /* ========================================main */
 .main__img {
   width: 300px;
@@ -857,4 +883,245 @@ main {
 #logoutBtn {
   color: #e74c3c;
   font-weight: 500;
+}
+
+/* searchtitle.css - responsive suggestion box style */
+
+.suggestion-box {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-height: 320px;
+  overflow-y: auto;
+  width: 550px;
+  z-index: 1000;
+  font-size: 14px;
+  margin-top: 8px;
+  right: auto;
+  left: 0;
+  transform: none;
+}
+
+.suggestion-item {
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background-color: #f4f4f4;
+}
+
+/* Gợi ý phần header tiêu đề */
+.suggestion-box > div:first-child {
+  font-weight: bold;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  background-color: #fafafa;
+}
+
+/* ----------- Toggle button ----------- */
+.nav-toggle {
+  display: none;
+  font-size: 20px;
+  background: rgb(171, 185, 172);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* ----------- Navigation styles ----------- */
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.header__nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  display: block;
+}
+
+/* resposive */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .header__nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header__select {
+    width: 160px;
+  }
+  .main__item--container {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .blog__video {
+    flex-wrap: wrap;
+  }
+
+  .blog__video video {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header__search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .header__selection,
+  .header__address,
+  .header__price,
+  .header__btn1 {
+    width: 100%;
+  }
+  .header__select {
+    width: 100%;
+  }
+
+  .main__item--container {
+    grid-template-columns: 1fr;
+  }
+
+  .work__body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .work__img {
+    width: 100%;
+  }
+
+  .footer-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-form__input,
+  .footer-form__submit {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header__logo {
+    height: 60px;
+  }
+
+  .header__background2 {
+    height: 200px;
+    width: 100%;
+  }
+  .header__background {
+    height: auto;
+    width: 100%;
+  }
+
+  .header__nav a {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  .main__desc,
+  .main__code {
+    font-size: 16px;
+  }
+
+  .main__info--code {
+    font-size: 16px;
+  }
+
+  .main__img {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer__heading,
+  .footer__link {
+    font-size: 1.4rem;
+  }
+
+  .blog__video video {
+    height: auto;
+  }
+}
+
+/* ----------- Responsive for mobile ----------- */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    order: -1; /* Đẩy nút ra trước logo */
+    margin-right: 10px;
+  }
+
+  .header__body {
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .header__nav.active {
+    display: block;
+  }
+
+  .header__nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .header__nav ul li {
+    width: 90%;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+  }
+
+  .header__nav ul li:hover {
+    background-color: #eee;
+  }
+
+  .header__nav ul li a {
+    color: #333;
+  }
 }
