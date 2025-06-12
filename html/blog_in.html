@@ -115,23 +115,13 @@
             ><img src="/img/logo.png" alt="Green inn" class="header__logo"
           /></a>
           <!-- nav -->
-          <nav class="header__nav">
+          <nav class="header__nav" id="mainNav">
             <ul>
-              <li>
-                <a href="/html/home_in.html">Nhà trọ,phòng trọ</a>
-              </li>
-              <li>
-                <a href="/html/homeN_in.html">Nhà nguyên căn</a>
-              </li>
-              <li>
-                <a href="/html/canho_in.html">Căn hộ</a>
-              </li>
-              <li>
-                <a href="/html/review_in.html">Video Review</a>
-              </li>
-              <li>
-                <a href="/html/blog_in.html"> Blog</a>
-              </li>
+              <li><a href="/html/home_in.html">Nhà trọ,phòng trọ</a></li>
+              <li><a href="/html/homeN_in.html">Nhà nguyên căn</a></li>
+              <li><a href="/html/canho_in.html">Căn hộ</a></li>
+              <li><a href="/html/review_in.html">Video Review</a></li>
+              <li><a href="/html/blog_in.html">Blog</a></li>
             </ul>
           </nav>
           <div class="header__hearts">
@@ -146,9 +136,17 @@
             <div class="icon-wrapper bell-wrapper">
               <i class="fa-regular fa-bell"></i>
             </div>
-          </div>
-          <div class="header__hearts">
-            <img src="/img/avatar.jpg" alt="" class="header__img2 avatar" />
+            <div class="user-menu-wrapper">
+              <img src="/img/avatar.jpg" class="avatar" alt="avatar" />
+
+              <div class="user-dropdown" id="userDropdown">
+                <div class="user-dropdown-header" id="usernameDisplay">
+                  Khách
+                </div>
+                <div class="user-dropdown-item">Dành cho chủ trọ</div>
+                <div class="user-dropdown-item" id="logoutBtn">Đăng xuất</div>
+              </div>
+            </div>
           </div>
           <!-- btn -->
         </div>
@@ -172,19 +170,22 @@
             <div class="header__search1">
               <i class="header__icon fa-solid fa-magnifying-glass"></i>
               <input
+                id="keyword"
+                name="keyword"
                 class="header__input"
                 type="text"
                 placeholder="Bạn muốn tìm trọ ở đâu?"
+                autocomplete="off"
               />
             </div>
           </form>
           <div class="header__selection">
             <form>
               <i class="search__icon fa-solid fa-house"></i>
-              <select name="" id="" class="header__select">
+              <select id="type" class="header__select">
                 <option value="nhanguyencan">Nhà nguyên căn</option>
-                <option value="nhatro" selected>Nhà trọ,phòng trọ</option>
-                <option value="canho">căn hộ</option>
+                <option value="nhatro">Nhà trọ,phòng trọ</option>
+                <option value="canho">Căn hộ</option>
               </select>
             </form>
           </div>
@@ -192,7 +193,7 @@
             <form action="">
               <i class="search__icon fa-solid fa-location-dot"></i>
 
-              <select name="" id="" class="header__select">
+              <select id="location" name="location" class="header__select">
                 <optgroup label="Hà Nội">
                   <option value="thanhxuan">Thanh Xuân</option>
                   <option value="hadong" selected>Hà Đông</option>
@@ -212,7 +213,7 @@
           </div>
           <div class="header__price">
             <i class="search__icon fa-solid fa-dollar-sign"></i>
-            <select name="" id="" class="header__select">
+            <select id="price" name="price" class="header__select">
               <option value="">Mức giá</option>
               <option value="duoi">Dưới 1 triệu</option>
               <option value="bang">2-3 triệu</option>
@@ -222,9 +223,9 @@
             </select>
           </div>
           <div class="header__btn1">
-            <div class="btn header__btn2">
-              tìm kiếm<i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+            <button type="button" class="btn header__btn2" id="searchBtn">
+              tìm kiếm <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -364,7 +365,6 @@
     </section>
     <!-- js -->
     <script src="/main.js"></script>
-    <script src="/update_main.js"></script>
     <script src="/search.js"></script>
     <script src="/searchtitle.js"></script>
     <script src="/avatar.js"></script>
