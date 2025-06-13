@@ -118,11 +118,11 @@
           <!-- nav -->
           <nav class="header__nav" id="mainNav">
             <ul>
-              <li><a href="/html/home_in.html">Nhà trọ,phòng trọ</a></li>
-              <li><a href="/html/homeN_in.html">Nhà nguyên căn</a></li>
-              <li><a href="/html/canho_in.html">Căn hộ</a></li>
-              <li><a href="/html/review_in.html">Video Review</a></li>
-              <li><a href="/html/blog_in.html">Blog</a></li>
+              <li><a href="/html/home.html">Nhà trọ,phòng trọ</a></li>
+              <li><a href="/html/homeN.html">Nhà nguyên căn</a></li>
+              <li><a href="/html/canho.html">Căn hộ</a></li>
+              <li><a href="/html/review.html">Video Review</a></li>
+              <li><a href="/html/blog.html">Blog</a></li>
             </ul>
           </nav>
           <!-- btn -->
@@ -891,5 +891,12 @@
     <script src="/main.js"></script>
     <script src="/search.js"></script>
     <script src="/searchtitle.js"></script>
+    <script>
+      fetch("http://localhost:3000/api/hello")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("result").textContent = data.message;
+        });
+    </script>
   </body>
 </html>

@@ -361,3 +361,9 @@ const mainNav = document.getElementById("mainNav");
 navToggle.addEventListener("click", () => {
   mainNav.classList.toggle("active");
 });
+fetch("http://localhost:3000/api/rooms")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log("Danh sách phòng:", data);
+    // Bạn có thể lặp qua danh sách để hiển thị lên HTML nếu muốn
+  });

@@ -907,5 +907,51 @@
     <script src="/search.js"></script>
     <script src="/searchtitle.js"></script>
     <script src="/avatar.js"></script>
+    <script>
+      function login(event) {
+        event.preventDefault();
+        const user = {
+          Username: document.getElementById("loginUsername").value,
+          Password: document.getElementById("loginPassword").value,
+        };
+
+        fetch("http://localhost:3000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        })
+          .then((res) => {
+            if (!res.ok) throw new Error("Đăng nhập thất bại");
+            return res.json();
+          })
+          .then((data) => {
+            document.getElementById("loginMessage").textContent = data.message;
+            localStorage.setItem("user", JSON.stringify(data.user)); // lưu nếu cần
+            window.location.href = "logn_in.html"; // chuyển sang trang đã đăng nhập
+          })
+          .catch((err) => {
+            document.getElementById("loginMessage").textContent =
+              "Sai tài khoản hoặc mật khẩu";
+          });
+      }
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (user) {
+        // Hiển thị tên người dùng trong dropdown
+        const name = user.fullname || user.Username;
+        document.getElementById("usernameDisplay").textContent = name;
+      } else {
+        // Nếu chưa đăng nhập thì chuyển về trang login
+        window.location.href = "login_sign.html";
+      }
+
+      // Xử lý đăng xuất
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", function () {
+          localStorage.removeItem("user");
+          window.location.href = "login_sign.html";
+        });
+    </script>
   </body>
 </html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="./img./img/https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="./img./img/https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Sen:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/ico/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/ico/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/ico/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/ico/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/ico/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/ico/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/ico/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/ico/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/ico/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/ico/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/ico/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/ico/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/ico/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./img/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <!--  font cdn  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <title>Quản lý phòng trọ</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      form {
+        margin-top: 20px;
+      }
+      input,
+      select,
+      textarea {
+        padding: 8px;
+        margin: 4px 0;
+        width: 100%;
+      }
+      .actions button {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Quản lý phòng trọ</h1>
+
+    <form id="roomForm">
+      <input type="hidden" id="roomId" />
+      <label>Tiêu đề:</label>
+      <input type="text" id="title" required />
+
+      <label>Loại phòng:</label>
+      <select id="type" required>
+        <option value="nhatro">Nhà trọ</option>
+        <option value="canho">Căn hộ</option>
+        <option value="nhanguyencan">Nhà nguyên căn</option>
+      </select>
+
+      <label>Khu vực:</label>
+      <input type="text" id="area" required />
+
+      <label>Giá (VNĐ):</label>
+      <input type="number" id="price" required />
+
+      <label>Link ảnh:</label>
+      <input type="text" id="image" />
+
+      <label>Mô tả:</label>
+      <textarea id="description" rows="3"></textarea>
+
+      <button type="submit">Lưu phòng</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tiêu đề</th>
+          <th>Loại</th>
+          <th>Khu vực</th>
+          <th>Giá</th>
+          <th>Ảnh</th>
+          <th>Mô tả</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="roomList"></tbody>
+    </table>
+
+    <script>
+      const api = "http://localhost:3000/api/rooms";
+      const form = document.getElementById("roomForm");
+      const roomList = document.getElementById("roomList");
+
+      function fetchRooms() {
+        fetch(api)
+          .then((res) => res.json())
+          .then((data) => {
+            roomList.innerHTML = "";
+            data.forEach((room) => {
+              roomList.innerHTML += `
+              <tr>
+                <td>${room.title}</td>
+                <td>${room.type}</td>
+                <td>${room.area}</td>
+                <td>${room.price.toLocaleString()} đ</td>
+                <td><img src="${room.image}" width="80"/></td>
+                <td>${room.description}</td>
+                <td class="actions">
+                  <button onclick='editRoom(${JSON.stringify(
+                    room
+                  )})'>Sửa</button>
+                  <button onclick='deleteRoom("${room.id}")'>Xoá</button>
+                </td>
+              </tr>`;
+            });
+          });
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const room = {
+          title: form.title.value,
+          type: form.type.value,
+          area: form.area.value,
+          price: Number(form.price.value),
+          image: form.image.value,
+          description: form.description.value,
+        };
+        const id = form.roomId.value;
+        if (id) {
+          fetch(`${api}/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(room),
+          }).then(fetchRooms);
+        } else {
+          fetch(api, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(room),
+          }).then(fetchRooms);
+        }
+        form.reset();
+      });
+
+      function editRoom(room) {
+        form.roomId.value = room.id;
+        form.title.value = room.title;
+        form.type.value = room.type;
+        form.area.value = room.area;
+        form.price.value = room.price;
+        form.image.value = room.image;
+        form.description.value = room.description;
+      }
+
+      function deleteRoom(id) {
+        if (confirm("Bạn có chắc muốn xoá phòng này?")) {
+          fetch(`${api}/${id}`, { method: "DELETE" }).then(fetchRooms);
+        }
+      }
+
+      fetchRooms();
+    </script>
+  </body>
+</html>
