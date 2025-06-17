@@ -186,7 +186,7 @@
           Password: document.getElementById("regPassword").value,
         };
 
-        fetch("http://localhost:3000/api/register", {
+        fetch("http://localhost/nhatro-backend/register.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
@@ -207,7 +207,7 @@
           Password: document.getElementById("loginPassword").value,
         };
 
-        fetch("http://localhost:3000/api/login", {
+        fetch("http://localhost/nhatro-backend/login.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
