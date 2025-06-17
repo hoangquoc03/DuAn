@@ -908,6 +908,7 @@
     <script src="/searchtitle.js"></script>
     <script src="/avatar.js"></script>
     <script>
+      // 🔒 Hàm xử lý đăng nhập
       function login(event) {
         event.preventDefault();
         const user = {
@@ -926,32 +927,42 @@
           })
           .then((data) => {
             document.getElementById("loginMessage").textContent = data.message;
-            localStorage.setItem("user", JSON.stringify(data.user)); // lưu nếu cần
-            window.location.href = "logn_in.html"; // chuyển sang trang đã đăng nhập
+
+            // ✅ Lưu thông tin vào localStorage
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+            // ✅ Chuyển sang trang đã đăng nhập
+            window.location.href = "logn_in.html";
           })
           .catch((err) => {
             document.getElementById("loginMessage").textContent =
               "Sai tài khoản hoặc mật khẩu";
           });
       }
-      const user = JSON.parse(localStorage.getItem("user"));
 
-      if (user) {
-        // Hiển thị tên người dùng trong dropdown
-        const name = user.fullname || user.Username;
-        document.getElementById("usernameDisplay").textContent = name;
-      } else {
-        // Nếu chưa đăng nhập thì chuyển về trang login
-        window.location.href = "login_sign.html";
-      }
+      // ✅ Nếu đang ở trang logn_in.html (đã đăng nhập)
+      window.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem("user"));
 
-      // Xử lý đăng xuất
-      document
-        .getElementById("logoutBtn")
-        .addEventListener("click", function () {
-          localStorage.removeItem("user");
-          window.location.href = "login_sign.html";
-        });
+        if (user) {
+          const name = user.fullname || user.Username;
+          const usernameEl = document.getElementById("usernameDisplay");
+          if (usernameEl) usernameEl.textContent = name;
+
+          const logoutBtn = document.getElementById("logoutBtn");
+          if (logoutBtn) {
+            logoutBtn.addEventListener("click", function () {
+              localStorage.removeItem("user");
+              window.location.href = "login_sign.html";
+            });
+          }
+        } else {
+          // Chưa đăng nhập → chuyển về login
+          if (window.location.pathname.includes("logn_in.html")) {
+            window.location.href = "login_sign.html";
+          }
+        }
+      });
     </script>
   </body>
 </html>
