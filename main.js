@@ -361,9 +361,16 @@ const mainNav = document.getElementById("mainNav");
 navToggle.addEventListener("click", () => {
   mainNav.classList.toggle("active");
 });
-fetch("http://localhost:3000/api/rooms")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log("Danh sách phòng:", data);
-    // Bạn có thể lặp qua danh sách để hiển thị lên HTML nếu muốn
-  });
+// fetch("http://localhost:3000/api/rooms")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log("Danh sách phòng:", data);
+//     // Bạn có thể lặp qua danh sách để hiển thị lên HTML nếu muốn
+//   });
+// fetch("/backend/api/get_rooms.php")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log("Danh sách phòng:", data);
+//     // Render dữ liệu ra HTML ở đây
+//   })
+//   .catch((err) => console.error(err));

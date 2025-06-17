@@ -409,5 +409,32 @@
         </div>
       </div>
     </section>
+    <script>
+      fetch("/backend/api/get_rooms.php")
+        .then((res) => res.json())
+        .then((data) => {
+          const container = document.querySelector(".main__item--container");
+          container.innerHTML = ""; // Xoá cũ
+
+          data.forEach((room) => {
+            container.innerHTML += `
+          <div class="main__item">
+            <img src="/img/phong.jpg" alt="" class="main__img" />
+            <div class="img__icon7"><i class="fa-regular fa-heart"></i></div>
+            <div class="main__info">
+              <div class="main__info--code">${room.room_number}</div>
+              <div class="main__info--price"><span>Từ</span> ${room.price} triệu/tháng</div>
+              <div class="main__info1">${room.status}</div>
+              <div class="main__info--add">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <div class="main__info--add1">Khu vực chưa cập nhật</div>
+              </div>
+            </div>
+          </div>
+        `;
+          });
+        })
+        .catch((err) => console.error(err));
+    </script>
   </body>
 </html>

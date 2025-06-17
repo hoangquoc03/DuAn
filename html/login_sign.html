@@ -176,6 +176,13 @@
     </div>
     <script src="/main.js"></script>
     <script>
+      // 📌 Kiểm tra quyền truy cập nếu bạn đặt đoạn này trong admin_dashboard.html
+      // const user = JSON.parse(localStorage.getItem("user"));
+      // if (!user || user.role !== "admin") {
+      //   alert("Bạn không có quyền truy cập!");
+      //   window.location.href = "login_sign.html";
+      // }
+
       function register(event) {
         event.preventDefault();
         const user = {
@@ -186,7 +193,7 @@
           Password: document.getElementById("regPassword").value,
         };
 
-        fetch("http://localhost:3000/api/register", {
+        fetch("http://localhost/nhatro-backend/register.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
@@ -207,7 +214,7 @@
           Password: document.getElementById("loginPassword").value,
         };
 
-        fetch("http://localhost:3000/api/login", {
+        fetch("http://localhost/nhatro-backend/login.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
@@ -218,8 +225,16 @@
           })
           .then((data) => {
             document.getElementById("loginMessage").textContent = data.message;
+
+            // ✅ Lưu thông tin user vào localStorage
             localStorage.setItem("user", JSON.stringify(data.user));
-            window.location.href = "logn_in.html";
+
+            // ✅ Chuyển hướng theo vai trò
+            if (data.user.role === "admin") {
+              window.location.href = "admin_dashboard.html";
+            } else {
+              window.location.href = "logn_in.html"; // hoặc user_home.html
+            }
           })
           .catch(() => {
             document.getElementById("loginMessage").textContent =

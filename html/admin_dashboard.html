@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quản trị hệ thống nhà trọ</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+      }
+      header {
+        background-color: #055c02;
+        color: white;
+        padding: 20px;
+      }
+      nav {
+        background: #055c02;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+      }
+      nav button {
+        padding: 10px 15px;
+        border: none;
+        background: #055c02;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      nav button:hover {
+        background: #055c02;
+      }
+      section {
+        padding: 20px;
+      }
+      table {
+        width: 100%%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        background: white;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>👑 Trang quản trị hệ thống nhà trọ</h1>
+      <p>Chào mừng, <span id="adminName"></span></p>
+    </header>
+
+    <nav>
+      <button onclick="showTab('users')">Quản lý người dùng</button>
+      <button onclick="showTab('rooms')">Quản lý phòng trọ</button>
+      <button onclick="showTab('landlords')">Quản lý chủ phòng</button>
+      <button onclick="logout()">Đăng xuất</button>
+    </nav>
+
+    <section id="content">
+      <h2>Chọn một chức năng quản lý</h2>
+    </section>
+
+    <script>
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user || user.role !== "admin") {
+        alert("Bạn không có quyền truy cập!");
+        window.location.href = "login_sign.html";
+      } else {
+        document.getElementById("adminName").textContent = user.fullname;
+      }
+
+      function logout() {
+        localStorage.removeItem("user");
+        window.location.href = "login_sign.html";
+      }
+
+      function showTab(tab) {
+        if (tab === "users") {
+          loadUsers();
+        } else if (tab === "rooms") {
+          loadRooms();
+        } else if (tab === "landlords") {
+          loadLandlords();
+        }
+      }
+
+      function loadUsers() {
+        fetch("http://localhost/nhatro-backend/get_users.php")
+          .then((res) => res.json())
+          .then((data) => {
+            let html =
+              "<h2>👥 Danh sách người dùng</h2><table><tr><th>ID</th><th>Tên</th><th>Tài khoản</th><th>Quyền</th></tr>";
+            data.forEach((user) => {
+              html += `<tr><td>${user.id}</td><td>${user.fullname}</td><td>${user.username}</td><td>${user.role}</td></tr>`;
+            });
+            html += "</table>";
+            document.getElementById("content").innerHTML = html;
+          });
+      }
+
+      function loadRooms() {
+        fetch("http://localhost/nhatro-backend/get_rooms.php")
+          .then((res) => res.json())
+          .then((data) => {
+            let html =
+              "<h2>🏠 Danh sách phòng trọ</h2><table><tr><th>ID</th><th>Tên</th><th>Loại</th><th>Giá</th><th>Mô tả</th></tr>";
+            data.forEach((room) => {
+              html += `<tr><td>${room.id}</td><td>${room.name}</td><td>${room.type}</td><td>${room.price}</td><td>${room.description}</td></tr>`;
+            });
+            html += "</table>";
+            document.getElementById("content").innerHTML = html;
+          });
+      }
+
+      function loadLandlords() {
+        fetch("http://localhost/nhatro-backend/get_landlords.php")
+          .then((res) => res.json())
+          .then((data) => {
+            let html =
+              "<h2>🧑‍💼 Danh sách chủ phòng</h2><table><tr><th>ID</th><th>Tên</th><th>SĐT</th><th>Email</th></tr>";
+            data.forEach((ld) => {
+              html += `<tr><td>${ld.id}</td><td>${ld.fullname}</td><td>${ld.phone}</td><td>${ld.email}</td></tr>`;
+            });
+            html += "</table>";
+            document.getElementById("content").innerHTML = html;
+          });
+      }
+    </script>
+  </body>
+</html>
