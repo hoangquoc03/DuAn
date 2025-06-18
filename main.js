@@ -102,7 +102,7 @@ function register(event) {
     regMessage.style.color = "green";
 
     setTimeout(() => {
-      window.location.href = "/html/logn_in.html";
+      window.location.href = "./html/logn_in.html";
     }, 1500);
   }
 }

@@ -16,7 +16,7 @@
     />
 
     <link rel="stylesheet" href="/assets/css/icon/login.css" />
-
+    <link rel="stylesheet" href="/assets/css/postinn.css" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link
@@ -147,12 +147,12 @@
           <form class="form-item sign-up" action="" id="registerForm">
             <h1>Đăng ký</h1>
             <!-- Select vai trò -->
-            <!-- <div class="form-group">
+            <div class="form-group">
               <select id="loginRole" name="role" class="form-select">
                 <option value="chutro">Chủ trọ</option>
                 <option value="nguoithue">Người thuê trọ</option>
               </select>
-            </div> -->
+            </div>
 
             <input
               type="email"
@@ -227,6 +227,13 @@
           .then((res) => res.json())
           .then((data) => {
             document.getElementById("regMessage").textContent = data.message;
+
+            if (data.message === "Đăng ký thành công") {
+              // ✅ Chuyển sang trang login sau 1 giây
+              setTimeout(() => {
+                window.location.href = "logn_in.html";
+              }, 1000);
+            }
           })
           .catch(() => {
             document.getElementById("regMessage").textContent = "Lỗi đăng ký";
@@ -251,7 +258,6 @@
           })
           .then((data) => {
             document.getElementById("loginMessage").textContent = data.message;
-
             // ✅ Lưu thông tin user vào localStorage
             localStorage.setItem("user", JSON.stringify(data.user));
 
