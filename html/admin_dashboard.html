@@ -668,7 +668,9 @@
         form.email.value = user.email;
         form.phone.value = user.phone;
         form.role.value = user.role;
-
+        document.querySelector("#userModal .modal-title").innerText =
+          "✏️ Sửa người dùng";
+        form.querySelector("button[type='submit']").innerText = "Cập nhật";
         const modal = new bootstrap.Modal(document.getElementById("userModal"));
         modal.show();
 
@@ -705,7 +707,9 @@
         form.tenant_name.value = tenant.name;
         form.tenant_phone.value = tenant.phone;
         form.tenant_identity_card.value = tenant.identity_card;
-
+        document.querySelector("#tenantModal .modal-title").innerText =
+          "✏️ Sửa người thuê";
+        form.querySelector("button[type='submit']").innerText = "Cập nhật";
         const modal = new bootstrap.Modal(
           document.getElementById("tenantModal")
         );
@@ -746,7 +750,9 @@
         form.landlord_id.value = room.landlord_id;
         form.rented_from.value = room.rented_from || "";
         form.due_date.value = room.due_date || "";
-
+        document.querySelector("#roomModal .modal-title").innerText =
+          "✏️ Sửa phòng";
+        form.querySelector("button[type='submit']").innerText = "Cập nhật";
         const modal = new bootstrap.Modal(document.getElementById("roomModal"));
         modal.show();
 
@@ -785,6 +791,9 @@
         form.landlord_name.value = landlord.name;
         form.landlord_phone.value = landlord.phone;
         form.landlord_address.value = landlord.address;
+        document.querySelector("#landlordModal .modal-title").innerText =
+          "✏️ Sửa chủ trọ";
+        form.querySelector("button[type='submit']").innerText = "Cập nhật";
         const modal = new bootstrap.Modal(
           document.getElementById("landlordModal")
         );
@@ -1021,6 +1030,10 @@
         document.getElementById("payment_amount").value = payment.amount;
         document.getElementById("payment_date").value = payment.payment_date;
         document.getElementById("payment_note").value = payment.note || "";
+        document.querySelector("#paymentModal .modal-title").innerText =
+          "✏️ Sửa thanh toán";
+        document.querySelector("#paymentForm button[type='submit']").innerText =
+          "Cập nhật";
 
         // Cập nhật dropdown (sau khi fetch xong)
         fetch("http://localhost/nhatro-backend/room/get_rooms.php")
