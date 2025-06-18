@@ -106,25 +106,25 @@
         <div class="container-info">
           <div class="info-item">
             <p>Bạn đã có tài khoản?</p>
-            <button class="btn">Đăng nhập</button>
+            <button class="btn" onclick="toggleForm(true)">Đăng nhập</button>
           </div>
           <div class="info-item">
             <p>Bạn chưa có tài khoản?</p>
-            <button class="btn">Đăng ký</button>
+            <button class="btn" onclick="toggleForm(false)">Đăng ký</button>
           </div>
         </div>
 
         <div class="container-form">
-          <form class="form-item log-in" action="">
+          <form class="form-item log-in" action="" id="loginForm">
             <h1>Đăng nhập</h1>
 
             <!-- Select vai trò -->
-            <div class="form-group">
+            <!-- <div class="form-group">
               <select id="loginRole" name="role" class="form-select">
                 <option value="chutro">Chủ trọ</option>
                 <option value="nguoithue">Người thuê trọ</option>
               </select>
-            </div>
+            </div> -->
             <input
               id="loginUsername"
               name="Username"
@@ -144,7 +144,7 @@
             </button>
           </form>
 
-          <form class="form-item sign-up" action="">
+          <form class="form-item sign-up" action="" id="registerForm">
             <h1>Đăng ký</h1>
             <!-- Select vai trò -->
             <div class="form-group">
@@ -200,7 +200,14 @@
       //   alert("Bạn không có quyền truy cập!");
       //   window.location.href = "login_sign.html";
       // }
-
+      // function toggleForm(isLogin) {
+      //   document.querySelector(".log-in").style.display = isLogin
+      //     ? "block"
+      //     : "none";
+      //   document.querySelector(".sign-up").style.display = isLogin
+      //     ? "none"
+      //     : "block";
+      // }
       function register(event) {
         event.preventDefault();
         const user = {
