@@ -35,3 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+document.getElementById("hostBtn").addEventListener("click", function () {
+  window.location.href = "/html/postinn.html"; // Đường dẫn tới trang dành cho chủ trọ
+});
