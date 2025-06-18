@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+
 $data = json_decode(file_get_contents("php://input"));
 
 $username = $data->Username;
@@ -8,6 +9,7 @@ $email = $data->Email;
 $phone = $data->Phone;
 $fullname = $data->fullname;
 
+// Kiểm tra trùng username
 $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
@@ -18,6 +20,7 @@ if ($stmt->num_rows > 0) {
     exit;
 }
 
+// Chèn user mới (với role mặc định là user)
 $stmt = $conn->prepare("INSERT INTO users (username, password, email, phone, fullname, role) VALUES (?, ?, ?, ?, ?, 'user')");
 $stmt->bind_param("sssss", $username, $password, $email, $phone, $fullname);
 $stmt->execute();

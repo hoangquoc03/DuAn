@@ -1,0 +1,63 @@
+/* postinn  */
+.main__dangtro {
+  padding: 20px;
+}
+
+.form__dangtro {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.form__image {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__image input {
+  margin-bottom: 10px;
+}
+
+.form__image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.form__info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 300px;
+}
+
+.form__info input,
+.form__info textarea,
+.form__info select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* nút đăng bài  */
+.btn__dangbai {
+  background-color: #ff9800; /* màu cam */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn__dangbai:hover {
+  background-color: #e67e00; /* màu cam đậm hơn khi hover */
+}

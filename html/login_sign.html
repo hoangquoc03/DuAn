@@ -117,12 +117,21 @@
         <div class="container-form">
           <form class="form-item log-in" action="">
             <h1>Đăng nhập</h1>
+
+            <!-- Select vai trò -->
+            <div class="form-group">
+              <select id="loginRole" name="role" class="form-select">
+                <option value="chutro">Chủ trọ</option>
+                <option value="nguoithue">Người thuê trọ</option>
+              </select>
+            </div>
             <input
               id="loginUsername"
               name="Username"
               placeholder="Tên đăng nhập"
               type="text"
             />
+
             <input
               id="loginPassword"
               name="Password"
@@ -134,8 +143,18 @@
               Đăng nhập
             </button>
           </form>
+
           <form class="form-item sign-up" action="">
             <h1>Đăng ký</h1>
+
+            <!-- Select vai trò -->
+            <div class="form-group">
+              <select id="loginRole" name="role" class="form-select">
+                <option value="chutro">Chủ trọ</option>
+                <option value="nguoithue">Người thuê trọ</option>
+              </select>
+            </div>
+
             <input
               type="email"
               id="regEmail"
@@ -176,6 +195,13 @@
     </div>
     <script src="/main.js"></script>
     <script>
+      // 📌 Kiểm tra quyền truy cập nếu bạn đặt đoạn này trong admin_dashboard.html
+      // const user = JSON.parse(localStorage.getItem("user"));
+      // if (!user || user.role !== "admin") {
+      //   alert("Bạn không có quyền truy cập!");
+      //   window.location.href = "login_sign.html";
+      // }
+
       function register(event) {
         event.preventDefault();
         const user = {
@@ -218,8 +244,16 @@
           })
           .then((data) => {
             document.getElementById("loginMessage").textContent = data.message;
+
+            // ✅ Lưu thông tin user vào localStorage
             localStorage.setItem("user", JSON.stringify(data.user));
-            window.location.href = "logn_in.html";
+
+            // ✅ Chuyển hướng theo vai trò
+            if (data.user.role === "admin") {
+              window.location.href = "admin_dashboard.html";
+            } else {
+              window.location.href = "logn_in.html"; // hoặc user_home.html
+            }
           })
           .catch(() => {
             document.getElementById("loginMessage").textContent =

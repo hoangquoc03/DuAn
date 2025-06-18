@@ -130,3 +130,33 @@ body {
   left: -100%;
   opacity: 0;
 }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(3, 88, 3);
+  margin-bottom: 6px;
+}
+
+.form-select {
+  width: 220px;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.form-select:focus {
+  border-color: rgb(3, 88, 3);
+  outline: none;
+}
