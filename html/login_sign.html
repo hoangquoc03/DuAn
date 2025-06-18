@@ -117,12 +117,21 @@
         <div class="container-form">
           <form class="form-item log-in" action="">
             <h1>Đăng nhập</h1>
+
+            <!-- Select vai trò -->
+            <div class="form-group">
+              <select id="loginRole" name="role" class="form-select">
+                <option value="chutro">Chủ trọ</option>
+                <option value="nguoithue">Người thuê trọ</option>
+              </select>
+            </div>
             <input
               id="loginUsername"
               name="Username"
               placeholder="Tên đăng nhập"
               type="text"
             />
+
             <input
               id="loginPassword"
               name="Password"
@@ -134,8 +143,18 @@
               Đăng nhập
             </button>
           </form>
+
           <form class="form-item sign-up" action="">
             <h1>Đăng ký</h1>
+
+            <!-- Select vai trò -->
+            <div class="form-group">
+              <select id="loginRole" name="role" class="form-select">
+                <option value="chutro">Chủ trọ</option>
+                <option value="nguoithue">Người thuê trọ</option>
+              </select>
+            </div>
+
             <input
               type="email"
               id="regEmail"
