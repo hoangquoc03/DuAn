@@ -191,6 +191,7 @@
           <div class="modal-body">
             <form id="roomForm">
               <input type="hidden" id="room_id_hidden" />
+
               <input
                 class="form-control mb-2"
                 id="room_number"
@@ -217,7 +218,18 @@
                 type="number"
                 required
               />
-              <button class="btn btn-primary" type="submit">Thêm</button>
+
+              <!-- Ngày bắt đầu thuê -->
+              <label for="rented_from" class="form-label"
+                >Ngày bắt đầu thuê</label
+              >
+              <input class="form-control mb-2" id="rented_from" type="date" />
+
+              <!-- Ngày kết thúc -->
+              <label for="due_date" class="form-label">Ngày kết thúc</label>
+              <input class="form-control mb-2" id="due_date" type="date" />
+
+              <button class="btn btn-primary" type="submit">Lưu</button>
             </form>
           </div>
         </div>
@@ -474,8 +486,12 @@
                 <td>${user.username}</td>
                 <td>${user.email}</td>
                 <td>${user.role}</td>
-                <td><button class='btn btn-warning btn-sm'>✏️ Sửa</button>
-                <button class='btn btn-danger btn-sm' onclick='deleteUser(${user.id})'>🗑️ Xóa</button></td>
+                <td><button class='btn btn-warning btn-sm' onclick='editUser(${JSON.stringify(
+                  user
+                )})'>✏️ Sửa</button>
+                <button class='btn btn-danger btn-sm' onclick='deleteUser(${
+                  user.id
+                })'>🗑️ Xóa</button></td>
               </tr>`;
             });
             html += "</table>";
@@ -501,7 +517,9 @@
                 <td>${room.due_date ?? ""}</td>
 
                 <td>
-                  <button class='btn btn-warning btn-sm'>✏️ Sửa</button>
+                  <button class='btn btn-warning btn-sm' onclick='editRoom(${JSON.stringify(
+                    room
+                  )})'>✏️ Sửa</button>
                   <button class='btn btn-danger btn-sm' onclick='deleteRoom(${
                     room.room_id
                   })'>🗑️ Xóa</button>
@@ -527,14 +545,19 @@
                 <td>${landlord.name}</td>
                 <td>${landlord.phone}</td>
                 <td>${landlord.address}</td>
-                <td><button class='btn btn-warning btn-sm'>✏️ Sửa</button>
-                <button class='btn btn-danger btn-sm' onclick='deleteLandlord(${landlord.landlord_id})'>🗑️ Xóa</button></td>
+                <td><button class='btn btn-warning btn-sm' onclick='editLandlord(${JSON.stringify(
+                  landlord
+                )})'>✏️ Sửa</button>
+                <button class='btn btn-danger btn-sm' onclick='deleteLandlord(${
+                  landlord.landlord_id
+                })'>🗑️ Xóa</button></td>
               </tr>`;
             });
             html += "</table>";
             document.getElementById("content").innerHTML = html;
           });
       }
+
       function showAddUserForm() {
         const form = document.getElementById("userForm");
         form.reset(); // reset form
@@ -571,6 +594,8 @@
       function showAddRoomForm() {
         const form = document.getElementById("roomForm");
         form.reset();
+        document.getElementById("room_id_hidden").value = "";
+
         const modal = new bootstrap.Modal(document.getElementById("roomModal"));
         modal.show();
 
@@ -581,7 +606,10 @@
             price: form.price.value,
             status: form.status.value,
             landlord_id: form.landlord_id.value,
+            rented_from: form.rented_from.value,
+            due_date: form.due_date.value,
           };
+
           fetch("http://localhost/nhatro-backend/room/add_room.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -671,26 +699,69 @@
             .catch(() => alert("Lỗi cập nhật người dùng"));
         };
       }
+      function editTenant(tenant) {
+        const form = document.getElementById("tenantForm");
+        document.getElementById("tenant_id_hidden").value = tenant.tenant_id;
+        form.tenant_name.value = tenant.name;
+        form.tenant_phone.value = tenant.phone;
+        form.tenant_identity_card.value = tenant.identity_card;
 
+        const modal = new bootstrap.Modal(
+          document.getElementById("tenantModal")
+        );
+        modal.show();
+
+        form.onsubmit = (e) => {
+          e.preventDefault();
+          const data = {
+            tenant_id: document.getElementById("tenant_id_hidden").value,
+            name: form.tenant_name.value,
+            phone: form.tenant_phone.value,
+            identity_card: form.tenant_identity_card.value,
+          };
+
+          fetch("http://localhost/nhatro-backend/tenants/update_tenant.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              alert(res.message || "Cập nhật thành công");
+              bootstrap.Modal.getInstance(
+                document.getElementById("tenantModal")
+              ).hide();
+              loadTenants();
+            })
+            .catch(() => alert("Lỗi cập nhật người thuê"));
+        };
+      }
       function editRoom(room) {
         const form = document.getElementById("roomForm");
-        form.room_id.value = room.room_id;
+
+        document.getElementById("room_id_hidden").value = room.room_id;
         form.room_number.value = room.room_number;
         form.price.value = room.price;
         form.status.value = room.status;
         form.landlord_id.value = room.landlord_id;
+        form.rented_from.value = room.rented_from || "";
+        form.due_date.value = room.due_date || "";
+
         const modal = new bootstrap.Modal(document.getElementById("roomModal"));
         modal.show();
 
         form.onsubmit = (e) => {
           e.preventDefault();
           const data = {
-            room_id: form.room_id.value,
+            room_id: document.getElementById("room_id_hidden").value,
             room_number: form.room_number.value,
             price: form.price.value,
             status: form.status.value,
             landlord_id: form.landlord_id.value,
+            rented_from: form.rented_from.value,
+            due_date: form.due_date.value,
           };
+
           fetch("http://localhost/nhatro-backend/room/update_room.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
