@@ -115,6 +115,7 @@
       <button onclick="showTab('rooms')">🏠 Phòng trọ</button>
       <button onclick="showTab('landlords')">🧑‍💼 Chủ trọ</button>
       <button onclick="showTab('tenants')">👤 Người thuê</button>
+      <button onclick="showTab('payments')">💵 Thanh toán</button>
       <button onclick="logout()">🚪 Đăng xuất</button>
     </nav>
 
@@ -137,6 +138,7 @@
           </div>
           <div class="modal-body">
             <form id="userForm">
+              <input type="hidden" id="user_id_hidden" />
               <input
                 class="form-control mb-2"
                 id="fullname"
@@ -188,6 +190,7 @@
           </div>
           <div class="modal-body">
             <form id="roomForm">
+              <input type="hidden" id="room_id_hidden" />
               <input
                 class="form-control mb-2"
                 id="room_number"
@@ -236,6 +239,7 @@
           </div>
           <div class="modal-body">
             <form id="landlordForm">
+              <input type="hidden" id="landlord_id_hidden" />
               <input
                 class="form-control mb-2"
                 id="landlord_name"
@@ -303,6 +307,83 @@
         </div>
       </div>
     </div>
+    <!-- Modal Thêm Thanh Toán -->
+    <div
+      class="modal fade"
+      id="paymentModal"
+      tabindex="-1"
+      aria-labelledby="paymentModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="paymentModalLabel">
+              ➕ Thêm thanh toán
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Đóng"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="paymentForm">
+              <input type="hidden" id="payment_id_hidden" />
+              <div class="mb-3">
+                <label for="payment_room_id" class="form-label">Phòng</label>
+                <select
+                  class="form-select"
+                  id="payment_room_id"
+                  required
+                ></select>
+              </div>
+
+              <div class="mb-3">
+                <label for="payment_tenant_id" class="form-label"
+                  >Người thuê</label
+                >
+                <select
+                  class="form-select"
+                  id="payment_tenant_id"
+                  required
+                ></select>
+              </div>
+
+              <div class="mb-3">
+                <label for="payment_amount" class="form-label">Số tiền</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="payment_amount"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="payment_date" class="form-label"
+                  >Ngày thanh toán</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="payment_date"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="payment_note" class="form-label">Ghi chú</label>
+                <input type="text" class="form-control" id="payment_note" />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Lưu</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
       const user = JSON.parse(localStorage.getItem("user"));
@@ -326,6 +407,7 @@
         else if (tab === "rooms") loadRooms();
         else if (tab === "landlords") loadLandlords();
         else if (tab === "tenants") loadTenants();
+        else if (tab === "payments") loadPayments();
       }
       function createEditButton(callbackName, item) {
         return `<button class='btn btn-warning btn-sm' onclick='${callbackName}(${JSON.stringify(
@@ -408,15 +490,22 @@
             let html = `<h2>🏠 Danh sách phòng trọ</h2>
               <button class='btn btn-success mb-2' onclick='showAddRoomForm()'>➕ Thêm phòng</button>
               <table class='table table-bordered'>
-              <tr><th>ID</th><th>Số phòng</th><th>Giá</th><th>Trạng thái</th><th>Hành động</th></tr>`;
+              <tr><th>ID</th><th>Số phòng</th><th>Giá</th><th>Trạng thái</th><th>Ngày bắt đầu</th><th>Ngày kết thúc</th><th>Hành động</th></tr>`;
             data.forEach((room) => {
               html += `<tr>
                 <td>${room.room_id}</td>
                 <td>${room.room_number}</td>
                 <td>${room.price}</td>
                 <td>${room.status}</td>
-                <td><button class='btn btn-warning btn-sm'>✏️ Sửa</button>
-                <button class='btn btn-danger btn-sm' onclick='deleteRoom(${room.room_id})'>🗑️ Xóa</button></td>
+                <td>${room.rented_from ?? ""}</td>
+                <td>${room.due_date ?? ""}</td>
+
+                <td>
+                  <button class='btn btn-warning btn-sm'>✏️ Sửa</button>
+                  <button class='btn btn-danger btn-sm' onclick='deleteRoom(${
+                    room.room_id
+                  })'>🗑️ Xóa</button>
+                </td>
               </tr>`;
             });
             html += "</table>";
@@ -543,20 +632,22 @@
       }
       function editUser(user) {
         const form = document.getElementById("userForm");
-        form.user_id.value = user.id;
+
+        document.getElementById("user_id_hidden").value = user.id;
         form.fullname.value = user.fullname;
         form.username.value = user.username;
-        form.password.value = ""; // Có thể không sửa mật khẩu
+        form.password.value = ""; // không sửa mật khẩu
         form.email.value = user.email;
         form.phone.value = user.phone;
         form.role.value = user.role;
+
         const modal = new bootstrap.Modal(document.getElementById("userModal"));
         modal.show();
 
         form.onsubmit = (e) => {
           e.preventDefault();
           const data = {
-            id: form.user_id.value,
+            id: document.getElementById("user_id_hidden").value,
             fullname: form.fullname.value,
             username: form.username.value,
             password: form.password.value,
@@ -745,6 +836,165 @@
             loadTenants();
           })
           .catch(() => alert("Lỗi xoá người thuê"));
+      }
+      function loadPayments() {
+        fetch("http://localhost/nhatro-backend/payments/get_payments.php")
+          .then((res) => res.json())
+          .then((data) => {
+            let html = `<h2>💵 Danh sách thanh toán</h2>
+        <button class='btn btn-success mb-2' onclick='showAddPaymentForm()'>➕ Thêm thanh toán</button>
+        <table class='table table-bordered'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Phòng</th>
+              <th>Người thuê</th>
+              <th>Số tiền</th>
+              <th>Ngày thanh toán</th>
+              <th>Ghi chú</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>`;
+            data.forEach((payment) => {
+              html += `<tr>
+          <td>${payment.payment_id}</td>
+          <td>${payment.room_number}</td>
+          <td>${payment.tenant_name}</td>
+          <td>${Number(payment.amount).toLocaleString()}₫</td>
+          <td>${payment.payment_date}</td>
+          <td>${payment.note || ""}</td>
+          <td>
+            <button class='btn btn-warning btn-sm' onclick='editPayment(${JSON.stringify(
+              payment
+            )})'>✏️ Sửa</button>
+            <button class='btn btn-danger btn-sm' onclick='deletePayment(${
+              payment.payment_id
+            })'>🗑️ Xóa</button>
+          </td>
+        </tr>`;
+            });
+            html += "</tbody></table>";
+            document.getElementById("content").innerHTML = html;
+          })
+          .catch((err) => {
+            console.error("Lỗi khi tải thanh toán:", err);
+            document.getElementById("content").innerHTML =
+              "<p class='text-danger'>Không thể tải dữ liệu thanh toán.</p>";
+          });
+      }
+      function showAddPaymentForm() {
+        document.getElementById("paymentForm").reset();
+        document.getElementById("payment_id_hidden").value = "";
+
+        fetch("http://localhost/nhatro-backend/room/get_rooms.php")
+          .then((res) => res.json())
+          .then((rooms) => {
+            const roomSelect = document.getElementById("payment_room_id");
+            roomSelect.innerHTML = "";
+            rooms.forEach((room) => {
+              roomSelect.innerHTML += `<option value="${room.room_id}">${room.room_number}</option>`;
+            });
+          });
+
+        fetch("http://localhost/nhatro-backend/tenants/get_tenant.php")
+          .then((res) => res.json())
+          .then((tenants) => {
+            const tenantSelect = document.getElementById("payment_tenant_id");
+            tenantSelect.innerHTML = "";
+            tenants.forEach((tenant) => {
+              tenantSelect.innerHTML += `<option value="${tenant.tenant_id}">${tenant.name}</option>`;
+            });
+          });
+
+        const modal = new bootstrap.Modal(
+          document.getElementById("paymentModal")
+        );
+        modal.show();
+      }
+      document
+        .getElementById("paymentForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const data = {
+            payment_id: document.getElementById("payment_id_hidden").value,
+            room_id: document.getElementById("payment_room_id").value,
+            tenant_id: document.getElementById("payment_tenant_id").value,
+            amount: document.getElementById("payment_amount").value,
+            payment_date: document.getElementById("payment_date").value,
+            note: document.getElementById("payment_note").value,
+          };
+
+          const url = data.payment_id
+            ? "http://localhost/nhatro-backend/payments/update_payment.php"
+            : "http://localhost/nhatro-backend/payments/add_payment.php";
+
+          fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              alert(res.message || "Đã lưu thanh toán!");
+              bootstrap.Modal.getInstance(
+                document.getElementById("paymentModal")
+              ).hide();
+              loadPayments();
+            })
+            .catch(() => alert("Lỗi khi lưu thanh toán"));
+        });
+      function editPayment(payment) {
+        document.getElementById("payment_id_hidden").value = payment.payment_id;
+        document.getElementById("payment_amount").value = payment.amount;
+        document.getElementById("payment_date").value = payment.payment_date;
+        document.getElementById("payment_note").value = payment.note || "";
+
+        // Cập nhật dropdown (sau khi fetch xong)
+        fetch("http://localhost/nhatro-backend/room/get_rooms.php")
+          .then((res) => res.json())
+          .then((rooms) => {
+            const roomSelect = document.getElementById("payment_room_id");
+            roomSelect.innerHTML = "";
+            rooms.forEach((room) => {
+              const selected =
+                room.room_number === payment.room_number ? "selected" : "";
+              roomSelect.innerHTML += `<option value="${room.room_id}" ${selected}>${room.room_number}</option>`;
+            });
+          });
+
+        fetch("http://localhost/nhatro-backend/tenants/get_tenant.php")
+          .then((res) => res.json())
+          .then((tenants) => {
+            const tenantSelect = document.getElementById("payment_tenant_id");
+            tenantSelect.innerHTML = "";
+            tenants.forEach((tenant) => {
+              const selected =
+                tenant.name === payment.tenant_name ? "selected" : "";
+              tenantSelect.innerHTML += `<option value="${tenant.tenant_id}" ${selected}>${tenant.name}</option>`;
+            });
+          });
+
+        const modal = new bootstrap.Modal(
+          document.getElementById("paymentModal")
+        );
+        modal.show();
+      }
+      function deletePayment(id) {
+        if (!confirm("Bạn có chắc chắn muốn xoá thanh toán này?")) return;
+
+        fetch("http://localhost/nhatro-backend/payments/delete_payment.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ payment_id: id }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            alert(res.message || "Đã xoá thanh toán");
+            loadPayments();
+          })
+          .catch(() => alert("Lỗi khi xoá thanh toán"));
       }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
